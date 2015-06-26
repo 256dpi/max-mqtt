@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 108.0, 79.0, 1056.0, 769.0 ],
+		"rect" : [ 108.0, 79.0, 843.0, 536.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,158 +38,124 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-2",
-					"maxclass" : "led",
+					"fontsize" : 48.0,
+					"id" : "obj-13",
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 340.0, 616.0, 24.0, 24.0 ],
-					"style" : ""
+					"numoutlets" : 0,
+					"patching_rect" : [ 74.0, 57.0, 111.0, 60.0 ],
+					"style" : "",
+					"text" : "mqtt"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"id" : "obj-11",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 543.0, 321.5, 103.0, 37.0 ],
+					"presentation_rect" : [ 592.0, 365.0, 0.0, 0.0 ],
+					"style" : "default",
+					"text" : "connection url for broker"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"bubbleside" : 0,
+					"id" : "obj-10",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 253.0, 426.0, 72.0, 52.0 ],
+					"presentation_rect" : [ 220.0, 365.0, 0.0, 0.0 ],
+					"style" : "default",
+					"text" : "connection state"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"bubbleside" : 0,
+					"id" : "obj-9",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 407.0, 426.0, 72.0, 52.0 ],
+					"presentation_rect" : [ 381.0, 483.0, 0.0, 0.0 ],
+					"style" : "default",
+					"text" : "incomming messages",
+					"textjustification" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"bubbleside" : 2,
+					"id" : "obj-8",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 671.5, 118.0, 55.0, 52.0 ],
+					"presentation_rect" : [ 681.5, 40.0, 0.0, 0.0 ],
+					"style" : "default",
+					"text" : "publish number"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"bubbleside" : 2,
+					"id" : "obj-6",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 489.5, 151.0, 90.0, 52.0 ],
+					"presentation_rect" : [ 431.0, 63.0, 0.0, 0.0 ],
+					"style" : "default",
+					"text" : "publish simple message",
+					"textjustification" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"bubbleside" : 2,
+					"id" : "obj-5",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 320.0, 103.0, 107.0, 52.0 ],
+					"style" : "default",
+					"text" : "subscribe and unsubscribe topic"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-3",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 442.0, 648.0, 120.0, 22.0 ],
-					"style" : "",
-					"text" : "/topic \"294.0\""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 499.0, 528.0, 132.0, 22.0 ],
-					"style" : "",
-					"text" : "publish /topic 0.2"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"format" : 6,
-					"id" : "obj-5",
-					"maxclass" : "flonum",
+					"linecount" : 3,
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 612.0, 440.0, 50.0, 22.0 ],
-					"style" : ""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-8",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 612.0, 484.0, 128.0, 22.0 ],
-					"style" : "",
-					"text" : "prepend publish /topic"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-9",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 385.0, 466.0, 107.0, 22.0 ],
-					"style" : "",
-					"text" : "unsubscribe /topic"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-10",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 494.0, 466.0, 68.0, 22.0 ],
-					"style" : "",
-					"text" : "disconnect"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-11",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 286.0, 466.0, 91.0, 22.0 ],
-					"style" : "",
-					"text" : "publish /topic 7"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-13",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 190.0, 466.0, 94.0, 22.0 ],
-					"style" : "",
-					"text" : "subscribe /topic"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-14",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 135.0, 466.0, 53.0, 22.0 ],
-					"style" : "",
-					"text" : "connect"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-15",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "int", "", "" ],
-					"patching_rect" : [ 340.0, 572.0, 244.0, 22.0 ],
-					"style" : "",
-					"text" : "mxj mqtt mqtt://shiftr-io:try@connect.shiftr.io"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"attr" : "Port",
-					"id" : "obj-16",
-					"maxclass" : "attrui",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 102.5, 568.0, 150.0, 22.0 ],
-					"style" : ""
+					"numoutlets" : 0,
+					"patching_rect" : [ 131.0, 159.0, 97.0, 66.0 ],
+					"style" : "default",
+					"text" : "connect and disconnect to/from broker",
+					"textjustification" : 1
 				}
 
 			}
@@ -201,7 +167,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 331.0, 275.0, 24.0, 24.0 ],
+					"patching_rect" : [ 277.0, 394.0, 24.0, 24.0 ],
 					"style" : ""
 				}
 
@@ -213,8 +179,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 433.0, 307.0, 120.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 383.0, 394.0, 120.0, 22.0 ],
+					"style" : "",
+					"text" : "/topic -0.1"
 				}
 
 			}
@@ -225,9 +192,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 490.0, 187.0, 132.0, 22.0 ],
+					"patching_rect" : [ 561.0, 269.0, 132.0, 22.0 ],
 					"style" : "",
-					"text" : "publish /topic 294."
+					"text" : "publish /topic -0.1"
 				}
 
 			}
@@ -240,7 +207,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 603.0, 99.0, 50.0, 22.0 ],
+					"patching_rect" : [ 674.0, 181.0, 50.0, 22.0 ],
 					"style" : ""
 				}
 
@@ -252,7 +219,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 603.0, 143.0, 128.0, 22.0 ],
+					"patching_rect" : [ 674.0, 225.0, 128.0, 22.0 ],
 					"style" : "",
 					"text" : "prepend publish /topic"
 				}
@@ -265,7 +232,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 376.0, 125.0, 107.0, 22.0 ],
+					"patching_rect" : [ 364.0, 169.0, 107.0, 22.0 ],
 					"style" : "",
 					"text" : "unsubscribe /topic"
 				}
@@ -278,7 +245,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 485.0, 125.0, 68.0, 22.0 ],
+					"patching_rect" : [ 175.0, 236.0, 68.0, 22.0 ],
 					"style" : "",
 					"text" : "disconnect"
 				}
@@ -291,9 +258,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 277.0, 125.0, 91.0, 22.0 ],
+					"patching_rect" : [ 480.0, 213.0, 109.0, 22.0 ],
 					"style" : "",
-					"text" : "publish /topic 7"
+					"text" : "publish /topic hello"
 				}
 
 			}
@@ -304,7 +271,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 181.0, 125.0, 94.0, 22.0 ],
+					"patching_rect" : [ 268.0, 169.0, 94.0, 22.0 ],
 					"style" : "",
 					"text" : "subscribe /topic"
 				}
@@ -317,7 +284,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 126.0, 125.0, 53.0, 22.0 ],
+					"patching_rect" : [ 120.0, 236.0, 53.0, 22.0 ],
 					"style" : "",
 					"text" : "connect"
 				}
@@ -330,45 +297,14 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
-					"patching_rect" : [ 331.0, 231.0, 244.0, 22.0 ],
+					"patching_rect" : [ 277.0, 329.0, 244.0, 22.0 ],
 					"style" : "",
 					"text" : "mxj mqtt mqtt://shiftr-io:try@connect.shiftr.io"
 				}
 
 			}
-, 			{
-				"box" : 				{
-					"attr" : "Port",
-					"id" : "obj-6",
-					"maxclass" : "attrui",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 93.5, 227.0, 150.0, 22.0 ],
-					"style" : ""
-				}
-
-			}
  ],
 		"lines" : [ 			{
-				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-11", 0 ]
-				}
-
-			}
-, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"disabled" : 0,
@@ -388,64 +324,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-13", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-14", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-15", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-3", 1 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-15", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-16", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-12", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-29", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-4", 0 ]
 				}
 
 			}
@@ -505,15 +387,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-8", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-5", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-48", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -527,33 +400,6 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-52", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-12", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-6", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-8", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
-					"source" : [ "obj-9", 0 ]
 				}
 
 			}
