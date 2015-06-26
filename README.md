@@ -8,7 +8,7 @@ Use this object to allow your patches to communicate around the world using your
 
 ## Download
 
-[Download version 1.0.0 of the object.](https://github.com/256dpi/max-mqtt/releases/download/v1.0.0/mqtt.zip)
+[Download version 1.1.0 of the object.](https://github.com/256dpi/max-mqtt/releases/download/v1.1.0/mqtt.zip)
 
 ## Installation
 
