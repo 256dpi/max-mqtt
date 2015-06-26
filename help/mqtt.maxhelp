@@ -172,8 +172,8 @@
 					"id" : "obj-15",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "", "" ],
 					"patching_rect" : [ 340.0, 572.0, 244.0, 22.0 ],
 					"style" : "",
 					"text" : "mxj mqtt mqtt://shiftr-io:try@connect.shiftr.io"
@@ -328,8 +328,8 @@
 					"id" : "obj-12",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "", "" ],
 					"patching_rect" : [ 331.0, 231.0, 244.0, 22.0 ],
 					"style" : "",
 					"text" : "mxj mqtt mqtt://shiftr-io:try@connect.shiftr.io"

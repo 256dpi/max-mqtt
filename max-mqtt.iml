@@ -9,6 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="max" level="project" />
-    <orderEntry type="library" name="org.eclipse.paho.client.mqttv3-1.0.2" level="project" />
+    <orderEntry type="library" name="mqtt" level="project" />
   </component>
 </module>

@@ -13,12 +13,12 @@ public class mqtt extends MaxObject implements MqttCallback {
   private MqttClient client;
 
   private static final String[] INLET_ASSIST = new String[]{
-    "inlet 1 help"
+    "send commands to the mqtt client"
   };
 
   private static final String[] OUTLET_ASSIST = new String[]{
-    "outlet 1 help",
-    "outlet 2 help"
+    "a number representing the connection state",
+    "incomming messages with topic and payload"
   };
 
   public mqtt(Atom[] args) {

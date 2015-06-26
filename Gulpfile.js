@@ -8,9 +8,9 @@ gulp.task('clean', function(cb){
 
 gulp.task('copy', ['clean'], function(){
   return gulp.src([
+    './lib/mqtt.jar',
     './out/production/max-mqtt/mqtt.class',
     './help/mqtt.maxhelp',
-    './lib/org.eclipse.paho.client.mqttv3-1.0.2.jar',
     './README.md'
   ]).pipe(gulp.dest('./build'));
 });
