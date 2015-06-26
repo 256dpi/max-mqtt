@@ -1,3 +1,3 @@
 # max-mqtt
 
-**mqtt external object for max**
+**mqtt java (mxj) object for max**
