@@ -118,8 +118,23 @@ public class mqtt extends MaxObject implements MqttCallback {
   public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {}
 
   public void messageArrived(String topic, MqttMessage mqttMessage) {
-    byte[] payload = mqttMessage.getPayload();
-    outlet(1, new Atom[]{Atom.newAtom(topic), Atom.newAtom(new String(payload))});
+    String payload = new String(mqttMessage.getPayload());
+
+    try {
+      outlet(1, new Atom[]{Atom.newAtom(topic), Atom.newAtom(Long.parseLong(payload))});
+      return;
+    } catch (NumberFormatException e) {
+      // do nothing
+    }
+
+    try {
+      outlet(1, new Atom[]{Atom.newAtom(topic), Atom.newAtom(Double.parseDouble(payload))});
+      return;
+    } catch(NumberFormatException e) {
+      // do nothing
+    }
+
+    outlet(1, new Atom[]{Atom.newAtom(topic), Atom.newAtom(payload)});
   }
 
   public void connectionLost(Throwable throwable) {
