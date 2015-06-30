@@ -6,6 +6,8 @@ This mxj object capable java class wraps the [Java MQTT Client](https://eclipse.
 
 Use this object to allow your patches to communicate around the world using your own MQTT broker or an hosted service like [shiftr.io](https://shiftr.io).
 
+![max-mqtt](http://joel-github-static.s3.amazonaws.com/max-mqtt/max-mqtt.png)
+
 ## Download
 
 [Download version 1.1.0 of the object.](https://github.com/256dpi/max-mqtt/releases/download/v1.1.0/mqtt.zip)
