@@ -299,7 +299,7 @@
 					"outlettype" : [ "int", "", "" ],
 					"patching_rect" : [ 277.0, 329.0, 244.0, 22.0 ],
 					"style" : "",
-					"text" : "mxj mqtt mqtt://shiftr-io:try@connect.shiftr.io"
+					"text" : "mxj mqtt mqtt://try:try@broker.shiftr.io"
 				}
 
 			}
