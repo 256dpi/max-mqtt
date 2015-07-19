@@ -8,7 +8,7 @@ Use this object to allow your patches to communicate around the world using your
 
 ![max-mqtt](http://joel-github-static.s3.amazonaws.com/max-mqtt/max-mqtt.png)
 
-The object supports so far only a basic set of features to get going. If you need any specifiy functionality please create an issue.
+The object currently supports only a basic set of features to get going. If you need any specific functionality please create an issue.
 
 ## Download
 
