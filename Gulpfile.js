@@ -1,6 +1,6 @@
-var gulp = require('gulp');
-var del = require('del');
-var zip = require('gulp-zip');
+let gulp = require('gulp');
+let del = require('del');
+let zip = require('gulp-zip');
 
 gulp.task('clean', function(cb){
   return del(['./build'], cb);
