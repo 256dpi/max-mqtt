@@ -9,7 +9,7 @@ gulp.task('clean', function(cb){
 gulp.task('copy', ['clean'], function(){
   return gulp.src([
     './lib/mqtt.jar',
-    './out/production/max-mqtt/mqtt.class',
+    './out/mqtt.class',
     './help/mqtt.maxhelp',
     './README.md'
   ]).pipe(gulp.dest('./build'));
