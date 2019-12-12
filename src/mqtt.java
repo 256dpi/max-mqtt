@@ -7,8 +7,8 @@ import java.net.URISyntaxException;
 import java.util.UUID;
 
 public class mqtt extends MaxObject implements MqttCallback {
-  public String uri;
-  public String id;
+  public String uri = "tcp://localhost";
+  public String id = UUID.randomUUID().toString();
 
   private MqttClient client;
 
@@ -22,23 +22,23 @@ public class mqtt extends MaxObject implements MqttCallback {
   };
 
   public mqtt(Atom[] args) {
-    if(args.length > 0) {
-      this.uri = args[0].getString();
-    } else {
-      this.uri = "tcp://localhost";
-    }
-
-    if(args.length > 1) {
-      this.id = args[1].getString();
-    } else {
-      this.id = UUID.randomUUID().toString();
-    }
+    configure(args);
 
     declareInlets(new int[]{DataTypes.ALL});
     declareOutlets(new int[]{DataTypes.INT, DataTypes.MESSAGE});
 
     setInletAssist(INLET_ASSIST);
     setOutletAssist(OUTLET_ASSIST);
+  }
+
+  public void configure(Atom[] args) {
+    if(args.length > 0) {
+      this.uri = args[0].getString();
+    }
+
+    if(args.length > 1) {
+      this.id = args[1].getString();
+    }
   }
 
   public void connect() {
