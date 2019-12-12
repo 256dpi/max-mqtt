@@ -29,7 +29,7 @@ public class mqtt extends MaxObject implements MqttCallback {
     }
 
     if(args.length > 1) {
-      this.id = args[0].getString();
+      this.id = args[1].getString();
     } else {
       this.id = UUID.randomUUID().toString();
     }
