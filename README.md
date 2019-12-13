@@ -12,7 +12,7 @@ The object currently supports only a basic set of features to get going. If you 
 
 ## Download
 
-[Download version 1.1.0 of the object.](https://github.com/256dpi/max-mqtt/releases/download/v1.1.0/mqtt.zip)
+[Download the latest version of the object here.](https://github.com/256dpi/max-mqtt/releases)
 
 ## Installation
 
