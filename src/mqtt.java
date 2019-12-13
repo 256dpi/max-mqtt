@@ -79,9 +79,11 @@ public class mqtt extends MaxObject implements MqttCallbackExtended {
         String[] auth = uri.getUserInfo().split(":");
         if (auth.length > 0) {
           String user = auth[0];
-          String pass = auth[1];
           options.setUserName(user);
-          options.setPassword(pass.toCharArray());
+          if (auth.length > 1) {
+            String pass = auth[1];
+            options.setPassword(pass.toCharArray());
+          }
         }
       }
 
@@ -99,6 +101,7 @@ public class mqtt extends MaxObject implements MqttCallbackExtended {
       client.connect(options);
     } catch (Exception e) {
       post("connect: " + e.getMessage());
+      return;
     }
 
     // signal connected
