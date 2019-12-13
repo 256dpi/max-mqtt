@@ -5,6 +5,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+import java.util.HashSet;
 
 public class mqtt extends MaxObject implements MqttCallbackExtended {
   private static final String[] INLET_ASSIST = new String[]{
@@ -18,11 +19,9 @@ public class mqtt extends MaxObject implements MqttCallbackExtended {
   private MqttClient client;
   private String uri = "tcp://localhost";
   private String id = "";
+  private HashSet<String> subscriptions = new HashSet<>();
 
   public mqtt(Atom[] args) {
-    // configure object
-    configure(args);
-
     // declare inlets and outlets
     declareInlets(new int[]{DataTypes.ALL});
     declareOutlets(new int[]{DataTypes.INT, DataTypes.MESSAGE});
@@ -30,6 +29,9 @@ public class mqtt extends MaxObject implements MqttCallbackExtended {
     // declare inlet and outlet assists
     setInletAssist(INLET_ASSIST);
     setOutletAssist(OUTLET_ASSIST);
+
+    // configure object
+    configure(args);
   }
 
   public void configure(Atom[] args) {
@@ -42,15 +44,26 @@ public class mqtt extends MaxObject implements MqttCallbackExtended {
     if (args.length > 1) {
       this.id = args[1].getString();
     }
+
+    // reconnect if connected
+    if (this.client != null && this.client.isConnected()) {
+      disconnect();
+      connect();
+    }
   }
 
   public void connect() {
+    // check if connected
+    if (this.client != null && client.isConnected()) {
+      this.disconnect();
+    }
+
     // parse URI
     URI uri;
     try {
       uri = new URI(this.uri);
     } catch (URISyntaxException e) {
-      post("failed to parse URI: " + e.getMessage());
+      post("connect: " + e.getMessage());
       return;
     }
 
@@ -84,65 +97,128 @@ public class mqtt extends MaxObject implements MqttCallbackExtended {
 
       // connect client
       client.connect(options);
-
-      // signal connected
-      outlet(0, 1);
     } catch (Exception e) {
-      // post error
-      post("failed to connect: " + e.getMessage());
+      post("connect: " + e.getMessage());
     }
+
+    // signal connected
+    outlet(0, 1);
   }
 
   public void subscribe(Atom[] args) {
+    // check if connected
+    if (this.client == null || !client.isConnected()) {
+      post("subscribe: not connected");
+      return;
+    }
+
+    // check args
+    if (args.length < 1) {
+      post("subscribe: missing topic");
+      return;
+    }
+
+    // get topic
+    String topic = args[0].toString();
+
+    // add to set
+    this.subscriptions.add(topic);
+
     // subscribe to topic
-    if (args.length == 1) {
-      try {
-        client.subscribe(args[0].toString(), 0);
-      } catch (Exception e) {
-        // post error
-        post("failed to subscribe: " + e.getMessage());
-      }
+    try {
+      client.subscribe(topic, 0);
+    } catch (Exception e) {
+      post("subscribe: " + e.getMessage());
     }
   }
 
   public void publish(Atom[] args) {
+    // check if connected
+    if (this.client == null || !client.isConnected()) {
+      post("publish: not connected");
+      return;
+    }
+
+    // check args
+    if (args.length < 1) {
+      post("publish: missing topic");
+      return;
+    }
+
+    // get topic
+    String topic = args[0].toString();
+
+    // get payload
+    byte[] payload = new byte[]{};
+    if (args.length > 1) {
+      payload = args[1].toString().getBytes(StandardCharsets.UTF_8);
+    }
+
     // publish message
-    if (args.length == 2) {
-      try {
-        client.publish(args[0].toString(), args[1].toString().getBytes(StandardCharsets.UTF_8), 0, false);
-      } catch (Exception e) {
-        // post error
-        post("failed to publish: " + e.getMessage());
-      }
+    try {
+      client.publish(topic, payload, 0, false);
+    } catch (Exception e) {
+      post("publish: " + e.getMessage());
     }
   }
 
   public void unsubscribe(Atom[] args) {
+    // check if connected
+    if (this.client == null || !client.isConnected()) {
+      post("unsubscribe: not connected");
+      return;
+    }
+
+    // check args
+    if (args.length < 1) {
+      post("unsubscribe: missing topic");
+      return;
+    }
+
+    // get topic
+    String topic = args[0].toString();
+
+    // remove from set
+    this.subscriptions.remove(topic);
+
     // unsubscribe topic
-    if (args.length == 1) {
-      try {
-        client.unsubscribe(args[0].toString());
-      } catch (MqttException e) {
-        // post error
-        post("failed to unsubscribe: " + e.getMessage());
-      }
+    try {
+      client.unsubscribe(topic);
+    } catch (MqttException e) {
+      post("unsubscribe: " + e.getMessage());
     }
   }
 
   public void disconnect() {
+    // check if connected
+    if (this.client == null || !client.isConnected()) {
+      post("disconnect: not connected");
+      return;
+    }
+
     // disconnect client
     try {
       client.disconnect();
-      outlet(0, 0);
     } catch (MqttException e) {
-      // post error
-      post("failed to disconnect: " + e.getMessage());
+      post("disconnect: " + e.getMessage());
     }
+
+    // signal disconnection
+    outlet(0, 0);
   }
 
   public void connectComplete(boolean reconnect, String serverURI) {
     // signal connection
     outlet(0, 1);
+
+    // resubscribe topics
+    for (String topic : this.subscriptions) {
+      try {
+        client.subscribe(topic, 0);
+      } catch (Exception e) {
+        post("resubscribe: " + e.getMessage());
+      }
+    }
   }
 
   public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
@@ -152,24 +228,6 @@ public class mqtt extends MaxObject implements MqttCallbackExtended {
   public void messageArrived(String topic, MqttMessage mqttMessage) {
     // get payload
     String payload = new String(mqttMessage.getPayload());
-
-    // try to signal long
-    try {
-      // signal message
-      outlet(1, new Atom[]{Atom.newAtom(topic), Atom.newAtom(Long.parseLong(payload))});
-      return;
-    } catch (NumberFormatException e) {
-      // do nothing
-    }
-
-    // try to signal double
-    try {
-      // signal message
-      outlet(1, new Atom[]{Atom.newAtom(topic), Atom.newAtom(Double.parseDouble(payload))});
-      return;
-    } catch (NumberFormatException e) {
-      // do nothing
-    }
 
     // signal message
     outlet(1, new Atom[]{Atom.newAtom(topic), Atom.newAtom(payload)});
