@@ -71,6 +71,9 @@ public class mqtt extends MaxObject implements MqttCallbackExtended {
       // prepare options
       MqttConnectOptions options = new MqttConnectOptions();
 
+      // set low connect timeout
+      options.setConnectionTimeout(5);
+
       // enable reconnection (initial timeout 1s then doubled until 2min)
       options.setAutomaticReconnect(true);
 
