@@ -16,10 +16,13 @@ install: compile
 
 bundle:
 	rm mqtt.zip
-	rm -rf ./build
-	mkdir -p ./build
-	cp ./lib/mqtt.jar ./build/
-	cp ./out/mqtt.class ./build/
-	cp ./help/mqtt.maxhelp ./build/
-	cp README.md ./build/
-	zip mqtt.zip ./build/*
+	rm -rf ./mqtt
+	mkdir -p ./mqtt/help
+	mkdir -p ./mqtt/java-classes/lib
+	mkdir -p ./mqtt/java-classes/classes
+	cp ./lib/mqtt.jar ./mqtt/java-classes/lib
+	cp ./out/mqtt.class ./mqtt/java-classes/classes
+	cp ./help/mqtt.maxhelp ./mqtt/help
+	cp README.md ./mqtt
+	zip mqtt.zip ./mqtt/*
+	rm -rf ./mqtt
