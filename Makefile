@@ -16,5 +16,5 @@ bundle:
 	cp -r ./out/mqtt.mxo ./mqtt/externals/
 	cp ./out/mqtt.mxe64 ./mqtt/externals/
 	cp ./mqtt.maxhelp ./mqtt/help/
-	cp README.md ./mqtt
-	zip mqtt.zip ./mqtt/*
+	cp README.md ./mqtt/
+	zip -r mqtt.zip ./mqtt
