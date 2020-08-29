@@ -3,6 +3,7 @@ package main
 import (
 	"strconv"
 	"sync/atomic"
+	"time"
 
 	"github.com/256dpi/gomqtt/client"
 	"github.com/256dpi/gomqtt/packet"
@@ -29,6 +30,11 @@ func (m *mqtt) Init(obj *maxgo.Object, args []maxgo.Atom) {
 
 	// create service
 	m.svc = client.NewService(100)
+
+	// drop commands if not queued withing 1ms
+	m.svc.QueueTimeout = time.Millisecond
+
+	// TODO: Log error for dropped commands.
 
 	// register online callback
 	m.svc.OnlineCallback = func(resumed bool) {
