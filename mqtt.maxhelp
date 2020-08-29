@@ -310,7 +310,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"patching_rect" : [ 207.0, 351.0, 261.0, 22.0 ],
-					"text" : "mxj mqtt mqtt://try:try@broker.shiftr.io max-mqtt"
+					"text" : "mqtt mqtt://try:try@broker.shiftr.io max-mqtt"
 				}
 
 			}
