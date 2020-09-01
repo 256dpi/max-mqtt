@@ -7,26 +7,26 @@ import (
 
 	"github.com/256dpi/gomqtt/client"
 	"github.com/256dpi/gomqtt/packet"
-	"github.com/256dpi/maxgo"
+	"github.com/256dpi/max-go"
 )
 
 type mqtt struct {
-	cmd   *maxgo.Inlet
-	state *maxgo.Outlet
-	data  *maxgo.Outlet
+	cmd   *max.Inlet
+	state *max.Outlet
+	data  *max.Outlet
 	svc   *client.Service
 	conn  int64
 	url   string
 	id    string
 }
 
-func (m *mqtt) Init(obj *maxgo.Object, args []maxgo.Atom) {
+func (m *mqtt) Init(obj *max.Object, args []max.Atom) bool {
 	// declare inlets
-	m.cmd = obj.Inlet(maxgo.Any, "commands", true)
+	m.cmd = obj.Inlet(max.Any, "commands", true)
 
 	// declare outlets
-	m.state = obj.Outlet(maxgo.Int, "connection state")
-	m.data = obj.Outlet(maxgo.List, "incoming messages ")
+	m.state = obj.Outlet(max.Int, "connection state")
+	m.data = obj.Outlet(max.List, "incoming messages ")
 
 	// create service
 	m.svc = client.NewService(100)
@@ -48,7 +48,7 @@ func (m *mqtt) Init(obj *maxgo.Object, args []maxgo.Atom) {
 	// register message callback
 	m.svc.MessageCallback = func(message *packet.Message) error {
 		// send as list
-		m.data.List([]maxgo.Atom{message.Topic, string(message.Payload), int64(message.QOS), bool2int64(message.Retain)})
+		m.data.List([]max.Atom{message.Topic, string(message.Payload), int64(message.QOS), bool2int64(message.Retain)})
 
 		return nil
 	}
@@ -56,7 +56,7 @@ func (m *mqtt) Init(obj *maxgo.Object, args []maxgo.Atom) {
 	// register error callback
 	m.svc.ErrorCallback = func(err error) {
 		// log error
-		maxgo.Error("mqtt: %s", err.Error())
+		max.Error("mqtt: %s", err.Error())
 	}
 
 	// register offline callback
@@ -70,9 +70,11 @@ func (m *mqtt) Init(obj *maxgo.Object, args []maxgo.Atom) {
 
 	// configure
 	m.configure(args)
+
+	return true
 }
 
-func (m *mqtt) Handle(msg string, _ int, args []maxgo.Atom) {
+func (m *mqtt) Handle(_ int, msg string, args []max.Atom) {
 	// handle message
 	switch msg {
 	case "configure":
@@ -90,11 +92,11 @@ func (m *mqtt) Handle(msg string, _ int, args []maxgo.Atom) {
 	case "dblclick", "loadbang":
 		// ignore
 	default:
-		maxgo.Error("unknown message %s", msg)
+		max.Error("unknown message %s", msg)
 	}
 }
 
-func (m *mqtt) configure(args []maxgo.Atom) {
+func (m *mqtt) configure(args []max.Atom) {
 	// get url
 	if len(args) > 0 {
 		m.url, _ = args[0].(string)
@@ -117,7 +119,7 @@ func (m *mqtt) connect() {
 	m.svc.Start(client.NewConfigWithClientID(m.url, m.id))
 }
 
-func (m *mqtt) subscribe(args []maxgo.Atom) {
+func (m *mqtt) subscribe(args []max.Atom) {
 	// get topic
 	var topic string
 	if len(args) > 0 {
@@ -132,13 +134,13 @@ func (m *mqtt) subscribe(args []maxgo.Atom) {
 
 	// check topic
 	if topic == "" {
-		maxgo.Error("missing topic")
+		max.Error("missing topic")
 		return
 	}
 
 	// check qos
 	if !packet.QOS(qos).Successful() {
-		maxgo.Error("invalid qos")
+		max.Error("invalid qos")
 		return
 	}
 
@@ -146,7 +148,7 @@ func (m *mqtt) subscribe(args []maxgo.Atom) {
 	m.svc.Subscribe(topic, packet.QOS(qos))
 }
 
-func (m *mqtt) publish(args []maxgo.Atom) {
+func (m *mqtt) publish(args []max.Atom) {
 	// get topic
 	var topic string
 	if len(args) > 0 {
@@ -180,13 +182,13 @@ func (m *mqtt) publish(args []maxgo.Atom) {
 
 	// check topic
 	if topic == "" {
-		maxgo.Error("missing topic")
+		max.Error("missing topic")
 		return
 	}
 
 	// check qos
 	if !packet.QOS(qos).Successful() {
-		maxgo.Error("invalid qos")
+		max.Error("invalid qos")
 		return
 	}
 
@@ -194,7 +196,7 @@ func (m *mqtt) publish(args []maxgo.Atom) {
 	m.svc.Publish(topic, payload, packet.QOS(qos), retain)
 }
 
-func (m *mqtt) unsubscribe(args []maxgo.Atom) {
+func (m *mqtt) unsubscribe(args []max.Atom) {
 	// get topic
 	var topic string
 	if len(args) > 0 {
@@ -203,7 +205,7 @@ func (m *mqtt) unsubscribe(args []maxgo.Atom) {
 
 	// check topic
 	if topic == "" {
-		maxgo.Error("missing topic")
+		max.Error("missing topic")
 		return
 	}
 
@@ -222,7 +224,7 @@ func (m *mqtt) Free() {
 
 func init() {
 	// initialize Max class
-	maxgo.Register("mqtt", &mqtt{})
+	max.Register("mqtt", &mqtt{})
 }
 
 func main() {
