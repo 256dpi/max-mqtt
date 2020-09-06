@@ -89,8 +89,6 @@ func (m *mqtt) Handle(_ int, msg string, args []max.Atom) {
 		m.unsubscribe(args)
 	case "disconnect":
 		m.disconnect()
-	case "dblclick", "loadbang":
-		// ignore
 	default:
 		max.Error("unknown message %s", msg)
 	}
@@ -222,13 +220,9 @@ func (m *mqtt) Free() {
 	m.disconnect()
 }
 
-func init() {
+func main() {
 	// initialize Max class
 	max.Register("mqtt", &mqtt{})
-}
-
-func main() {
-	// not called
 }
 
 func bool2int64(b bool) int64 {
