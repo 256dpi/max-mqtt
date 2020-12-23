@@ -14,4 +14,4 @@ Use this object to allow your patches to communicate around the world using your
 
 ## Installation
 
-Unpack the .zip file and move the directory to your Mac packages directory.
+Unpack the .zip file and move the directory to your Max packages directory.
