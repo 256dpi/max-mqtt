@@ -60,7 +60,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 31.0, 172.0, 265.0, 22.0 ],
-					"text" : "configure mqtt://try:try@broker.shiftr.io max-mqtt"
+					"text" : "configure mqtt://public:public@public.cloud.shiftr.io max-mqtt"
 				}
 
 			}
@@ -310,7 +310,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"patching_rect" : [ 207.0, 351.0, 261.0, 22.0 ],
-					"text" : "mqtt mqtt://try:try@broker.shiftr.io max-mqtt"
+					"text" : "mqtt mqtt://public:public@public.cloud.shiftr.io max-mqtt"
 				}
 
 			}

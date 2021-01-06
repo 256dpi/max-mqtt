@@ -7,6 +7,7 @@ check:
 
 build:
 	maxgo -name mqtt -cross -install mqtt
+	cp mqtt.maxhelp /Users/256dpi/Documents/Max\ 8/Packages/mqtt/help/
 
 bundle:
 	rm -f mqtt.zip
