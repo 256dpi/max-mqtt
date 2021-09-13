@@ -113,8 +113,12 @@ func (m *mqtt) configure(args []max.Atom) {
 }
 
 func (m *mqtt) connect() {
+	// prepare config
+	config := client.NewConfigWithClientID(m.url, m.id)
+	config.MaxWriteDelay = time.Millisecond
+
 	// start service
-	m.svc.Start(client.NewConfigWithClientID(m.url, m.id))
+	m.svc.Start(config)
 }
 
 func (m *mqtt) subscribe(args []max.Atom) {
