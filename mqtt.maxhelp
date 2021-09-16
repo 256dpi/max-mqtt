@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 2,
+			"revision" : 11,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 202.0, 176.0, 843.0, 536.0 ],
+		"rect" : [ 1058.0, 559.0, 843.0, 536.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"bubble" : 1,
@@ -59,7 +60,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 31.0, 172.0, 265.0, 22.0 ],
+					"patching_rect" : [ 31.0, 172.0, 331.0, 22.0 ],
 					"text" : "configure mqtt://public:public@public.cloud.shiftr.io max-mqtt"
 				}
 
@@ -83,7 +84,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 471.0, 351.0, 217.0, 24.0 ],
+					"patching_rect" : [ 517.0, 351.0, 217.0, 24.0 ],
 					"style" : "default",
 					"text" : "default connection-URL and clientID"
 				}
@@ -160,7 +161,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 571.0, 30.0, 88.0, 66.0 ],
+					"patching_rect" : [ 571.0, 30.0, 89.0, 66.0 ],
 					"style" : "default",
 					"text" : "subscribe and unsubscribe topic"
 				}
@@ -307,9 +308,9 @@
 					"id" : "obj-12",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "int", "", "" ],
-					"patching_rect" : [ 207.0, 351.0, 261.0, 22.0 ],
+					"numoutlets" : 2,
+					"outlettype" : [ "int", "list" ],
+					"patching_rect" : [ 207.0, 351.0, 305.0, 22.0 ],
 					"text" : "mqtt mqtt://public:public@public.cloud.shiftr.io max-mqtt"
 				}
 
@@ -402,7 +403,11 @@
 
 			}
  ],
-		"dependency_cache" : [  ],
+		"dependency_cache" : [ 			{
+				"name" : "mqtt.mxo",
+				"type" : "iLaX"
+			}
+ ],
 		"autosave" : 0
 	}
 

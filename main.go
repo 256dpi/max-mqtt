@@ -10,6 +10,8 @@ import (
 	"github.com/256dpi/max-go"
 )
 
+// TODO: Wait on futures an check error?
+
 type mqtt struct {
 	cmd   *max.Inlet
 	state *max.Outlet
@@ -33,8 +35,6 @@ func (m *mqtt) Init(obj *max.Object, args []max.Atom) bool {
 
 	// drop commands if not queued withing 1ms
 	m.svc.QueueTimeout = time.Millisecond
-
-	// TODO: Log error for dropped commands.
 
 	// register online callback
 	m.svc.OnlineCallback = func(resumed bool) {
