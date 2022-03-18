@@ -1,7 +1,7 @@
 github.com/256dpi/gomqtt v0.14.2 h1:TBUKjqBJtU8tfZwiRbpZevzvMWUlzZlbhuzL0hIghok=
 github.com/256dpi/gomqtt v0.14.2/go.mod h1:2y4qpvxskFCnQpLIdEY5HG55zqXgAjB88xqrBbZsQRg=
-github.com/256dpi/max-go v0.6.0 h1:vWxBcreLYzQMFQUnOt2X6A1t0kPPrH31dJqXaG6dLXQ=
-github.com/256dpi/max-go v0.6.0/go.mod h1:LvRITk1ZMLz1VvHM2IEyYcBTCkb60lAC/EQSKiBQ9s4=
+github.com/256dpi/max-go v0.6.1 h1:FeO/vh0clW4KBAmsVjTJqWeQu+kOGBXxoM8LcD/2J2A=
+github.com/256dpi/max-go v0.6.1/go.mod h1:LvRITk1ZMLz1VvHM2IEyYcBTCkb60lAC/EQSKiBQ9s4=
 github.com/256dpi/mercury v0.2.0 h1:ImB0JYuZ28kwp2MpqnMdQFSD3z9mgaNYHrSjYuyP0LI=
 github.com/256dpi/mercury v0.2.0/go.mod h1:xxgxZSQO7VUwxGLpk8yRVe/WF0MKH7nCIwSh4kUVMy4=
 github.com/abiosoft/ishell v2.0.0+incompatible/go.mod h1:HQR9AqF2R3P4XXpMpI0NAzgHf/aS6+zVXRj14cVk9qg=
